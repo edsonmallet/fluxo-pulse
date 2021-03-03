@@ -1,5 +1,5 @@
 import Layout from '@/components/Layout';
-import Head from 'next/head';
+
 import { useRouter } from 'next/router';
 
 const Home: React.FC = () => {
@@ -7,8 +7,8 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <Layout companyLogoSrc="/logos/fluxo_logo.svg">
-        Você precisa de um codigo para acesso
+      <Layout companyLogoSrc="https://res.cloudinary.com/hiveradm/image/upload/v1597238000/hiver-companies-logo/o6ln6vnakbrqc88kt5p5.png">
+        {router.query.id}
       </Layout>
     </>
   );
