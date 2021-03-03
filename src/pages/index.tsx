@@ -1,14 +1,17 @@
+import { CodePulse } from '@/components/CodePulse';
 import Layout from '@/components/Layout';
-import Head from 'next/head';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const Home: React.FC = () => {
-  const router = useRouter();
+  const [code, setCode] = useState<string>('');
 
   return (
     <>
       <Layout companyLogoSrc="/logos/fluxo_logo.svg">
-        Você precisa de um codigo para acesso
+        <p>Digite o código de acesso da pesquisa para conseguir responder.</p>
+        <p>Sua participação é muito importante para sua Empresa</p>
+        <CodePulse onChange={(event) => setCode(event.target.value)} />
       </Layout>
     </>
   );

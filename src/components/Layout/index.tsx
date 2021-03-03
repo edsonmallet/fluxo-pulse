@@ -1,7 +1,7 @@
 import { memo, ReactNode } from 'react';
 import Image from 'next/image';
 import Head from 'next/head';
-import styles from './Layout.module.css';
+import { Container, FooterWrapper, HeaderWrapper, MainWrapper } from './styles';
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,14 +17,14 @@ const Layout: React.FC<LayoutProps> = ({
       <title>Fluxo Pulse</title>
       <link rel="icon" href="/favicon.ico" />
     </Head>
-    <div className={styles.container}>
-      <header className={styles.header}>
+    <Container>
+      <HeaderWrapper>
         <Image width={100} height={50} src={companyLogoSrc} loading="eager" />
-      </header>
+      </HeaderWrapper>
 
-      <main className={styles.main}>{children}</main>
+      <MainWrapper>{children}</MainWrapper>
 
-      <footer className={styles.footer}>
+      <FooterWrapper>
         Powered By
         <Image
           src="/logos/fluxo_icon.svg"
@@ -32,8 +32,8 @@ const Layout: React.FC<LayoutProps> = ({
           height={24}
           loading="eager"
         />
-      </footer>
-    </div>
+      </FooterWrapper>
+    </Container>
   </>
 );
 
