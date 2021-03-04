@@ -28,8 +28,8 @@ export const MainWrapper = styled.main`
 
 export const FooterWrapper = styled.footer`
   width: 100%;
-  border-top: 1px solid #eaeaea;
-  padding-bottom: 10px;
+  border-top: 1px solid #eee;
+  padding: 10px 0;
   display: flex;
   font-size: 0.7rem;
   font-weight: 700;
