@@ -1,24 +1,37 @@
 import { Button } from '@/components/Button';
 import { CodePulse } from '@/components/CodePulse';
 import Layout from '@/components/Layout';
-import { useState } from 'react';
+import useTranslation from '@/contexts/Intl';
+import { useRouter } from 'next/router';
+import { useCallback, useState } from 'react';
 
 const Home: React.FC = () => {
-  const [loading, setLoading] = useState<boolean>(false);
+  const { text } = useTranslation();
+  const router = useRouter();
+
+  const [codePulse, setCodePulse] = useState<string>('');
+
+  const checkExistPulse = useCallback(
+    (code) => {
+      router.push(`/${code}`);
+    },
+    [codePulse],
+  );
+
   return (
     <>
       <Layout companyLogoSrc="/logos/fluxo_logo.svg">
-        <p>Digite o código de acesso da pesquisa para conseguir responder.</p>
-        <p>Sua participação é muito importante para sua Empresa</p>
+        <p>{text('titleIndex')}</p>
+        <p>{text('subtitleIndex')}</p>
         <CodePulse
           length={6}
-          loading={loading}
-          onComplete={() => {
-            setLoading(true);
-            setTimeout(() => setLoading(false), 10000);
+          onComplete={(code) => {
+            setCodePulse(code);
+            checkExistPulse(code);
           }}
+          onChange={(code) => setCodePulse(code)}
         />
-        <Button>RESPONDER</Button>
+        <Button disabled={codePulse.length < 6}>{text('buttonIndex')}</Button>
       </Layout>
     </>
   );

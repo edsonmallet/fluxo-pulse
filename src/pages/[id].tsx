@@ -1,9 +1,11 @@
 import Layout from '@/components/Layout';
 
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 const Home: React.FC = () => {
   const router = useRouter();
+  const [informer, setInformer] = useState<boolean>(false);
 
   return (
     <>

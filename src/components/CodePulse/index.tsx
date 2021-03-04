@@ -7,6 +7,7 @@ interface CodePulseProps {
   label?: string;
   loading?: boolean;
   onComplete: (code: any) => void;
+  onChange: (code: any) => void;
 }
 
 const CodePulse: React.FC<CodePulseProps> = ({
@@ -14,6 +15,7 @@ const CodePulse: React.FC<CodePulseProps> = ({
   label,
   loading,
   onComplete,
+  onChange,
 }: CodePulseProps) => {
   const [code, setCode] = useState<Array<string>>(
     [...Array(length)].map(() => ''),
@@ -33,6 +35,8 @@ const CodePulse: React.FC<CodePulseProps> = ({
     }
     if (newCode.every((number) => number !== '')) {
       onComplete(newCode.join(''));
+    } else {
+      onChange(newCode.join(''));
     }
   };
 
