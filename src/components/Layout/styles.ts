@@ -1,3 +1,4 @@
+import theme from '@/styles/theme';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -26,6 +27,20 @@ export const MainWrapper = styled.main`
   align-items: center;
   padding: 20px;
   overflow: auto;
+
+  &::-webkit-scrollbar-track {
+    background-color: ${theme.colors.silver};
+  }
+
+  &::-webkit-scrollbar {
+    width: 3px;
+    background-color: ${theme.colors.silver};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${theme.colors.primary};
+    border: 1px solid ${theme.colors.primary};
+  }
 `;
 
 export const FooterWrapper = styled.footer`

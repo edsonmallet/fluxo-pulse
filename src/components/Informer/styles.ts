@@ -14,10 +14,10 @@ export const FormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  flex: 1 1 auto;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
+  min-height: 350px;
 `;
 
 export const Privacy = styled.div`

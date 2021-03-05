@@ -41,7 +41,7 @@ const InformerWrapper: React.FC<informerWrapperProps> = ({
       currentDay: new Date(),
       responseDay: 0,
     });
-    router.push(`/${code.toLocaleLowerCase()}/questions`);
+    router.push(`/${code}/questions`);
   };
 
   return (
