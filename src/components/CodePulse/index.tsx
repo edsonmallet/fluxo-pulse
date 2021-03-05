@@ -85,7 +85,7 @@ const CodePulse: React.FC<CodePulseProps> = ({
             <Input
               key={index}
               type="text"
-              inputMode="numeric"
+              inputMode="text"
               maxLength={1}
               value={number}
               readOnly={loading}
