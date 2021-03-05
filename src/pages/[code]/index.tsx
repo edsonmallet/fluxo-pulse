@@ -1,5 +1,6 @@
 import { InformerWrapper } from '@/components/Informer';
 import Layout from '@/components/Layout';
+import { Loading } from '@/components/Loading';
 import useTranslation from '@/contexts/Intl';
 import { NextPage, NextPageContext } from 'next';
 import { useRouter } from 'next/router';
@@ -41,11 +42,7 @@ const Home: NextPage<HomeProps> = ({ code }: HomeProps) => {
   return (
     <>
       <Layout companyLogoSrc={companyLogo}>
-        {companyLogo ? (
-          <InformerWrapper code={code} />
-        ) : (
-          'Verificando Codigo...'
-        )}
+        {companyLogo ? <InformerWrapper code={code} /> : <Loading />}
       </Layout>
     </>
   );
