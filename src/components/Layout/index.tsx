@@ -20,10 +20,12 @@ const Layout: React.FC<LayoutProps> = ({
     <Container>
       <HeaderWrapper>
         <Image
-          width={120}
-          height={60}
+          width={150}
+          height={50}
+          alt="Logo"
+          quality={100}
           src={companyLogoSrc || '/logos/fluxo_logo.svg'}
-          loading="eager"
+          loading="lazy"
           layout="intrinsic"
         />
       </HeaderWrapper>
