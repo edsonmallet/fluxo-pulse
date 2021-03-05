@@ -1,6 +1,5 @@
 import theme from '@/styles/theme';
 import styled from 'styled-components';
-import { ValidationProps } from '.';
 
 export const Container = styled.div`
   display: flex;
@@ -37,10 +36,15 @@ export const Input = styled.input`
   }
 `;
 
-export const Validations = styled.div<ValidationProps>`
+export const Validations = styled.div`
   min-height: 50px;
   font-size: 0.7em;
   font-weight: 600;
-  color: ${(props) =>
-    props.type === 'invalid' ? theme.colors.error : theme.colors.primary};
+`;
+
+export const Valid = styled.span`
+  color: ${theme.colors.primary};
+`;
+export const Invalid = styled.span`
+  color: ${theme.colors.error};
 `;

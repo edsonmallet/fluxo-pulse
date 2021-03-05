@@ -31,7 +31,7 @@ export const StringsPortuguese = {
     { value: '+10', label: '+10 anos' },
   ],
   codeInvalid: 'Código da pesquisa inválido!',
-  loading: 'Verificando ...',
+  loading: 'Verificando Código ...',
   valid: 'Código Valido',
   invalid: 'Código inválido',
 };
