@@ -19,7 +19,13 @@ const Layout: React.FC<LayoutProps> = ({
     </Head>
     <Container>
       <HeaderWrapper>
-        <Image width={100} height={50} src={companyLogoSrc} loading="eager" />
+        <Image
+          width={120}
+          height={60}
+          src={companyLogoSrc || '/logos/fluxo_logo.svg'}
+          loading="eager"
+          layout="intrinsic"
+        />
       </HeaderWrapper>
 
       <MainWrapper>{children}</MainWrapper>

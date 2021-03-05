@@ -10,28 +10,59 @@ const Home: React.FC = () => {
   const router = useRouter();
 
   const [codePulse, setCodePulse] = useState<string>('');
+  const [codeValid, setCodeValid] = useState<boolean>(false);
+  const [verifyCode, setVerifyCode] = useState<boolean>(false);
 
   const checkExistPulse = useCallback(
-    (code) => {
-      router.push(`/${code}`);
+    async (code) => {
+      try {
+        setVerifyCode(true);
+        const res = await fetch(`api/v1/${code}`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+        const json = await res.json();
+        setCodePulse(json.code);
+        setCodeValid(true);
+        setVerifyCode(false);
+      } catch (e) {
+        setVerifyCode(false);
+      }
     },
     [codePulse],
   );
+
+  const handleCode = (code: string) => {
+    setCodePulse(code);
+    if (code.length < 5) setCodeValid(false);
+  };
+
+  const handleClickInitPulse = () => {
+    router.push(`${codePulse}`);
+  };
 
   return (
     <>
       <Layout companyLogoSrc="/logos/fluxo_logo.svg">
         <p>{text('titleIndex')}</p>
         <p>{text('subtitleIndex')}</p>
+
         <CodePulse
-          length={6}
+          length={5}
+          loading={verifyCode}
+          valid={codeValid}
           onComplete={(code) => {
             setCodePulse(code);
             checkExistPulse(code);
           }}
-          onChange={(code) => setCodePulse(code)}
+          onChange={(code) => handleCode(code)}
         />
-        <Button disabled={codePulse.length < 6}>{text('buttonIndex')}</Button>
+
+        <Button disabled={!codeValid} onClick={() => handleClickInitPulse()}>
+          {text('buttonIndex')}
+        </Button>
       </Layout>
     </>
   );

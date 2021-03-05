@@ -30,6 +30,7 @@ const theme = {
   },
   metrics: {
     borderRadius: '8px',
+    padding: '16px',
   },
 };
 

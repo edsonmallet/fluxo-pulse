@@ -6,10 +6,11 @@ export default createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
   }
-  body {
+  html,body {
     background: ${(props) => props.theme.colors.background};
     color: ${(props) => props.theme.colors.text};
     font-family:'Montserrat', sans-serif;
+    font-size: 11pt;
     line-height: 2rem;
   }
 `;

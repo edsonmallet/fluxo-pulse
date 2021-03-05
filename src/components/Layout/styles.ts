@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  min-width: 100vw;
-  min-height: 100vh;
+  width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -18,12 +18,14 @@ export const HeaderWrapper = styled.header`
 `;
 
 export const MainWrapper = styled.main`
-  padding: 5rem 0;
-  flex: 1;
+  padding: 10px;
   display: flex;
+  flex: 1 1 auto;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 20px;
+  overflow: auto;
 `;
 
 export const FooterWrapper = styled.footer`
@@ -33,6 +35,8 @@ export const FooterWrapper = styled.footer`
   display: flex;
   font-size: 0.7rem;
   font-weight: 700;
+  bottom: 0;
+  height: 50px;
   justify-content: center;
   align-items: center;
 `;
