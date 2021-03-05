@@ -7,6 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  line-height: 1.6rem;
 `;
 
 export const FormWrapper = styled.div`
@@ -14,13 +15,10 @@ export const FormWrapper = styled.div`
   flex-direction: column;
   width: 100%;
   flex: 1 1 auto;
-  border: 1px solid red;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
 `;
-
-export const Select = styled.select``;
 
 export const Privacy = styled.div`
   font-size: 0.8rem;

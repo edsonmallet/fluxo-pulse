@@ -1,18 +1,25 @@
 /* eslint-disable react/no-array-index-key */
+import useTranslation from '@/contexts/Intl';
 import { useRef, useState } from 'react';
-import { Container, Input, Inputs, Label } from './styles';
+import { Container, Input, Inputs, Label, Validations } from './styles';
 
 interface CodePulseProps {
   length: number;
   label?: string;
   loading?: boolean;
+  valid?: boolean;
   onComplete: (code: any) => void;
   onChange: (code: any) => void;
+}
+
+export interface ValidationProps {
+  type: string;
 }
 
 const CodePulse: React.FC<CodePulseProps> = ({
   length,
   label,
+  valid,
   loading,
   onComplete,
   onChange,
@@ -21,6 +28,7 @@ const CodePulse: React.FC<CodePulseProps> = ({
     [...Array(length)].map(() => ''),
   );
   const inputs = useRef<(HTMLInputElement | null)[]>([]);
+  const { text } = useTranslation();
 
   const processInput = (event: any, slot: number) => {
     const num = event.target.value;
@@ -51,6 +59,16 @@ const CodePulse: React.FC<CodePulseProps> = ({
     }
   };
 
+  const handleValidation = () => {
+    return loading
+      ? 'loading'
+      : Object.values(code).some((item) => item.length === 0)
+      ? ''
+      : valid
+      ? 'valid'
+      : 'invalid';
+  };
+
   return (
     <Container>
       {label && <Label>{label}</Label>}
@@ -71,6 +89,9 @@ const CodePulse: React.FC<CodePulseProps> = ({
           );
         })}
       </Inputs>
+      <Validations type={handleValidation()}>
+        {handleValidation().length > 0 && text(handleValidation())}
+      </Validations>
     </Container>
   );
 };
